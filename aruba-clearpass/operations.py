@@ -39,10 +39,6 @@ def api_request(method, endpoint, connector_info, config, params=None, data=None
     try:
         ms = ArubaAuth(config)
         url = "{base_url}{endpoint}".format(base_url=ms.base_url, endpoint=endpoint)
-        logger.error(f'method: {method}')
-        logger.error(f'endpoint: {endpoint}')
-        logger.error(f'params: {params}')
-        logger.error(f'data: {data}')
         token = ms.validate_token(config, connector_info)
         headers['Authorization'] = token
         headers['Content-Type'] = 'application/json'  # need to check this
